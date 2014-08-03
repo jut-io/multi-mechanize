@@ -13,6 +13,7 @@ import os
 import sys
 import threading
 import time
+import traceback
 
 from multimechanize.script_loader import ScriptLoader
 import os.path
@@ -110,6 +111,7 @@ class Agent(threading.Thread):
                 trans.run()
             except Exception, e:  # test runner catches all script exceptions here
                 error = str(e).replace(',', '')
+                traceback.print_exc()
 
             finish = self.default_timer()
 
